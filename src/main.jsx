@@ -10,6 +10,7 @@ import "@fontsource/ubuntu/400-italic.css";
 import "@fontsource/ubuntu/700-italic.css";
 
 import { theme } from "./theme/index";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
