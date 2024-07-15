@@ -1,9 +1,21 @@
-import { Button, Card, Flex, Icon, Tag } from "@chakra-ui/react";
+import {
+  Button,
+  Card,
+  Flex,
+  HStack,
+  Icon,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Tag,
+} from "@chakra-ui/react";
 import DashboardLayout from "../../components/DashboardLayout";
 import { PiDownloadSimpleBold } from "react-icons/pi";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import TransactionTable from "./components/TransactionTable";
+import { BsSearch } from "react-icons/bs";
 
+// *! Create table responsive
 const Transaction = () => {
   const tabs = [
     {
@@ -24,7 +36,7 @@ const Transaction = () => {
     },
   ];
   return (
-    <DashboardLayout>
+    <DashboardLayout title="Transaction">
       <Flex justify="end" mt="6" mb="3">
         <Button leftIcon={<Icon as={PiDownloadSimpleBold} />}>
           Export CSV
@@ -32,21 +44,36 @@ const Transaction = () => {
       </Flex>
       <Card borderRadius="1rem">
         <Tabs>
-          <TabList pt="4">
-            {tabs.map((tab) => (
-              <Tab
-                key={tab.name}
-                display="flex"
-                gap={2}
-                colorScheme="gray"
-                fontWeight="medium"
-              >
-                {tab.name}
-                <Tag colorScheme="gray" color="gray" borderRadius="full">
-                  {tab.count}
-                </Tag>
-              </Tab>
-            ))}
+          <TabList pt="4" display="flex" justifyContent="space-between">
+            <HStack>
+              {tabs.map((tab) => (
+                <Tab
+                  key={tab.name}
+                  display="flex"
+                  gap={2}
+                  pb="4"
+                  colorScheme="gray"
+                  fontWeight="medium"
+                >
+                  {tab.name}
+                  <Tag colorScheme="gray" color="gray" borderRadius="full">
+                    {tab.count}
+                  </Tag>
+                </Tab>
+              ))}
+            </HStack>
+            <InputGroup maxW="210px" pr="2">
+              <InputLeftElement pointerEvents="none">
+                <Icon as={BsSearch} color="gray.300" />
+              </InputLeftElement>
+              <Input
+                fontSize="xs"
+                color="black.60"
+                type="tel"
+                border="none"
+                placeholder="Search by ID or destination"
+              />
+            </InputGroup>
           </TabList>
           <TabPanels>
             <TabPanel>
