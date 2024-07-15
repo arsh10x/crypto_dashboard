@@ -22,7 +22,7 @@ const Support = () => {
             <InfoCard
               inverted={true}
               tagText="Contact"
-              imgUrl="/grid_bg.svg"
+              imgUrl="./grid_bg.svg"
               text="Learn more about our real estate, mortgage, and corporate account services."
             />
           }

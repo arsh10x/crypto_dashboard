@@ -17,7 +17,7 @@ const Dashboard = () => {
         <GridItem
           colSpan={{
             base: 1,
-            xl: 2, 
+            xl: 2,
           }}
         >
           <PortfolioSection />
@@ -30,7 +30,7 @@ const Dashboard = () => {
         </GridItem>
         <GridItem colSpan={1}>
           <InfoCard
-            imgUrl="/dot_bg.svg"
+            imgUrl="dot_bg.svg"
             text=" Learn more about Loans – Keep your Bitcoin, access it’s value without
           selling it"
             textTag="Loan"
@@ -41,7 +41,7 @@ const Dashboard = () => {
           <InfoCard
             inverted={true}
             textTag="Contact"
-            imgUrl="/grid_bg.svg"
+            imgUrl="grid_bg.svg"
             text="Learn more about our real estate, mortgage, and  corporate account services"
           />
         </GridItem>

@@ -39,8 +39,8 @@ const SideMenu = () => {
     >
       <Box>
         {/* *? textAlign="center" */}
-        <Heading px="10" as="h1" fontSize="20px" pt="3.5rem">
-          Home
+        <Heading px="10" as="h1" fontSize="20px" pt="3.5rem" color="p.purple">
+          CRYPTO
         </Heading>
         <Box mt="6" mx="3">
           {navLinks.map((nav) => (
