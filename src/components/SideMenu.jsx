@@ -3,8 +3,13 @@ import { Box, Heading, HStack, Stack, Text, Icon } from "@chakra-ui/react";
 import { IoGrid } from "react-icons/io5";
 import { GrTransaction } from "react-icons/gr";
 import { BiSupport } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const SideMenu = () => {
+  const location = useLocation();
+
+  const isActive = (link) => {
+    return location.pathname === link;
+  };
   const navLinks = [
     {
       icon: IoGrid,
@@ -41,6 +46,8 @@ const SideMenu = () => {
           {navLinks.map((nav) => (
             <Link to={nav.link} key={nav.text}>
               <HStack
+                bg={isActive(nav.link) ? "#F3F3F7" : "transparent"}
+                color={isActive(nav.link) ? "#171717" : "#797E82"}
                 borderRadius="10px"
                 py="3"
                 px="4"
@@ -49,7 +56,6 @@ const SideMenu = () => {
                   color: "#171717",
                   cursor: "pointer",
                 }}
-                color="#797E82"
               >
                 <Icon as={nav.icon} />
                 <Text fontSize="14px" fontWeight="medium">
@@ -66,12 +72,13 @@ const SideMenu = () => {
             borderRadius="10px"
             py="3"
             px="4"
+            bg={isActive("/support") ? "#F3F3F7" : "transparent"}
+            color={isActive("/support") ? "#171717" : "#797E82"}
             _hover={{
               bg: "#F3F3F3",
               color: "#171717",
               cursor: "pointer",
             }}
-            color="#797E82"
           >
             <Icon as={BiSupport} />
             <Text fontSize="14px" fontWeight="medium">
