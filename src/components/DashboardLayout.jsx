@@ -31,8 +31,8 @@ const DashboardLayout = ({ title, children }) => {
               "&::-webkit-scrollbar": {
                 display: "none",
               },
-              "-ms-overflow-style": "none" /* for Internet Explorer, Edge */,
-              "scrollbar-width": "none" /* for Firefox */,
+              "-ms-overflow-style": "none",
+              "scrollbar-width": "none",
             }}
           >
             {children}
