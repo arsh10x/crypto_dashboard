@@ -11,16 +11,16 @@ const Dashboard = () => {
       <Grid
         templateColumns={{
           base: "repeat(1, 1fr)",
-          md: "repeat(2, 1fr)",   
-          xl: "repeat(3, 1fr)",   
+          md: "repeat(2, 1fr)",
+          // xl: "repeat(3, 1fr)",
         }}
         gap={6}
       >
         <GridItem
           colSpan={{
             base: 1,
-            md: 2,  
-            xl: 3,  
+            md: 2,
+            // xl: 3,
           }}
         >
           <PortfolioSection />
