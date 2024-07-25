@@ -10,6 +10,8 @@ import {
   Stack,
   Text,
   Tag,
+  useBreakpointValue,
+  Collapse,
 } from "@chakra-ui/react";
 
 const TransactionTable = () => {
@@ -30,7 +32,7 @@ const TransactionTable = () => {
       date: "2023-06-18",
       time: "07:00 AM",
       type: {
-        name: "INR Widthdraw",
+        name: "INR Withdraw",
         tag: "Wire Transfer",
       },
       amount: "- ₹81,123.10",
@@ -80,7 +82,7 @@ const TransactionTable = () => {
       date: "2023-06-18",
       time: "07:00 AM",
       type: {
-        name: "BTC Widthdraw",
+        name: "BTC Withdraw",
       },
       amountType: {
         amount: "-5.05555544",
@@ -97,22 +99,29 @@ const TransactionTable = () => {
     cancelled: "#DC2626",
   };
 
+  // Breakpoint values
+  const showFullTable = useBreakpointValue({ base: false, md: true });
+
   return (
     <TableContainer>
       <Table variant="simple" colorScheme="gray">
         <Thead>
           <Tr>
-            <Th>ID</Th>
+            <Th display={{ base: "none", md: "table-cell" }}>ID</Th>
             <Th>Date & Time</Th>
-            <Th>Type</Th>
+            <Th display={{ base: "none", md: "table-cell" }}>Type</Th>
             <Th>Amount</Th>
             <Th>Status</Th>
           </Tr>
         </Thead>
-        <Tbody color="p.black">
+        <Tbody>
           {tableData.map((data) => (
             <Tr key={data.id}>
-              <Td fontSize="sm" fontWeight="medium">
+              <Td
+                display={{ base: showFullTable ? "table-cell" : "none", md: "table-cell" }}
+                fontSize="sm"
+                fontWeight="medium"
+              >
                 {data.id}
               </Td>
               <Td>
@@ -125,7 +134,9 @@ const TransactionTable = () => {
                   </Text>
                 </Stack>
               </Td>
-              <Td>
+              <Td
+                display={{ base: showFullTable ? "table-cell" : "none", md: "table-cell" }}
+              >
                 <Stack spacing={0}>
                   <Text fontSize="sm" fontWeight="medium">
                     {data.type.name}
@@ -159,6 +170,29 @@ const TransactionTable = () => {
                 >
                   {data.status}
                 </Tag>
+              </Td>
+              <Td
+                display={{ base: showFullTable ? "table-cell" : "none", md: "none" }}
+                colSpan={5}
+              >
+                <Collapse startingHeight={50} in={!showFullTable}>
+                  <Stack spacing={1}>
+                    <Text fontSize="sm" fontWeight="medium">
+                      ID: {data.id}
+                    </Text>
+                    <Text fontSize="sm" fontWeight="medium">
+                      Type: {data.type.name}
+                    </Text>
+                    <Text fontSize="sm" fontWeight="medium">
+                      Amount: {data.amount ? data.amount : data.amountType.amount}
+                    </Text>
+                    <Text fontSize="sm" fontWeight="medium">
+                      Status: <Tag bg={statusColor[data.status]} color="white" borderRadius="full">
+                        {data.status}
+                      </Tag>
+                    </Text>
+                  </Stack>
+                </Collapse>
               </Td>
             </Tr>
           ))}

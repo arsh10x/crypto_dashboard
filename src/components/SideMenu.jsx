@@ -4,12 +4,14 @@ import { IoGrid } from "react-icons/io5";
 import { GrTransaction } from "react-icons/gr";
 import { BiSupport } from "react-icons/bi";
 import { Link, useLocation } from "react-router-dom";
+
 const SideMenu = () => {
   const location = useLocation();
 
   const isActive = (link) => {
     return location.pathname === link;
   };
+
   const navLinks = [
     {
       icon: IoGrid,
@@ -35,11 +37,17 @@ const SideMenu = () => {
         base: "full",
         lg: "16rem",
       }}
-      h="100vh"
+      h={{ base: "auto", lg: "100vh" }}
     >
       <Box>
-        {/* *? textAlign="center" */}
-        <Heading px="10" as="h1" fontSize="20px" pt="3.5rem" color="p.purple">
+        <Heading
+          px={{ base: 4, lg: 10 }}
+          as="h1"
+          fontSize={{ base: "18px", lg: "20px" }}
+          pt={{ base: "2rem", lg: "3.5rem" }}
+          color="p.purple"
+          textAlign={{ base: "center", lg: "left" }}
+        >
           CRYPTO
         </Heading>
         <Box mt="6" mx="3">
@@ -49,8 +57,8 @@ const SideMenu = () => {
                 bg={isActive(nav.link) ? "#F3F3F7" : "transparent"}
                 color={isActive(nav.link) ? "#171717" : "#797E82"}
                 borderRadius="10px"
-                py="3"
-                px="4"
+                py={{ base: 2, lg: 3 }}
+                px={{ base: 3, lg: 4 }}
                 _hover={{
                   bg: "#F3F3F3",
                   color: "#171717",
@@ -58,7 +66,7 @@ const SideMenu = () => {
                 }}
               >
                 <Icon as={nav.icon} />
-                <Text fontSize="14px" fontWeight="medium">
+                <Text fontSize={{ base: "12px", lg: "14px" }} fontWeight="medium">
                   {nav.text}
                 </Text>
               </HStack>
@@ -70,8 +78,8 @@ const SideMenu = () => {
         <Link to="/support">
           <HStack
             borderRadius="10px"
-            py="3"
-            px="4"
+            py={{ base: 2, lg: 3 }}
+            px={{ base: 3, lg: 4 }}
             bg={isActive("/support") ? "#F3F3F7" : "transparent"}
             color={isActive("/support") ? "#171717" : "#797E82"}
             _hover={{
@@ -81,7 +89,7 @@ const SideMenu = () => {
             }}
           >
             <Icon as={BiSupport} />
-            <Text fontSize="14px" fontWeight="medium">
+            <Text fontSize={{ base: "12px", lg: "14px" }} fontWeight="medium">
               Support
             </Text>
           </HStack>

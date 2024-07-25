@@ -9,12 +9,11 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { HiOutlineUserCircle } from "react-icons/hi2";
-// import Support from "./../pages/Support/Support";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const TopNav = ({ title, onOpen }) => {
   return (
-    <Box boxShadow="sm" px="4" bg="white">
+    <Box boxShadow="sm" px={{ base: 2, md: 4 }} bg="white">
       <HStack justify="space-between" h="16" maxW="70rem" mx="auto">
         <Icon
           as={GiHamburgerMenu}
@@ -23,13 +22,18 @@ const TopNav = ({ title, onOpen }) => {
             base: "block",
             lg: "none",
           }}
+          boxSize={{ base: 6, md: 8 }}
         />
-        <Heading fontSize="28px" fontWeight="medium">
+        <Heading
+          fontSize={{ base: "20px", md: "24px", lg: "28px" }}
+          fontWeight="medium"
+          textAlign={{ base: "center", lg: "left" }}
+        >
           {title}
         </Heading>
         <Menu>
           <MenuButton>
-            <Icon as={HiOutlineUserCircle} boxSize={10} />
+            <Icon as={HiOutlineUserCircle} boxSize={{ base: 8, md: 10 }} />
           </MenuButton>
           <MenuList>
             <MenuItem>Profile</MenuItem>
